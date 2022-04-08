@@ -1,0 +1,82 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'jacoco'
+}
+
+group = 'com.sey'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jacoco {
+    // jacoco 버전
+    toolVersion = '0.8.7'
+
+    // 테스트 결과 리포트 저장 경로
+    // default는 "${project.reporting.baseDir}/jacoco"
+    // reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+// test task -> jacoco task 실행되도록 설정
+// test -> jacocoTestReport -> jacocoTestCoverageVerification
+
+test {
+
+    useJUnitPlatform()
+    // report는 항상 test 실행 후 생성됨
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    // test는 report 생성 전에 실행됨
+    dependsOn test
+
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.enabled true
+    }
+
+    finalizedBy 'jacocoTestCoverageVerification'
+}
+
+// 코드 커버리지 검증 수준 정의 (측정항목 등)
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = true
+            element = 'CLASS'
+
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.60
+            }
+        }
+    }
+}
+
+/*
+tasks.named('test') {
+    useJUnitPlatform()
+}
+*/
