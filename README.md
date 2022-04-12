@@ -3,6 +3,9 @@
 ![Codecov branch](https://img.shields.io/codecov/c/github/3un0/test-project/master?token=zvjafjyxt8)
 [![test CI](https://github.com/3UN0/test-project/actions/workflows/testCI.yml/badge.svg)](https://github.com/3UN0/test-project/actions/workflows/testCI.yml)
 
-[![ci](https://github.com/3UN0/test-project/workflows/testCI/badge.svg)]
+
+[![GithubActionWorkflow](https://github.com/actions/setup-dotnet/workflows/Main%20workflow/badge.svg)](https://github.com/3un0/test-project/actions)
+
+https://github.com/3UN0/test-project/workflows/test%20CI/badge.svg
 
 # test-project
