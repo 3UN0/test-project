@@ -52,11 +52,11 @@ jobs:
         name: jacoco-report
         path: build/reports/jacoco/test/html/index.html
         
-    - name: Deploy to GitHub Pages 🚀
+    - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         deploy_key: ${{ secrets.PERSONAL_TOKEN }}
-        external_repository: 3UN0/3un0.github.io/test-project/
-        publish_branch: master
-        publish_dir: public
+        external_repository: 3UN0/3UN0.github.io/test-project
+        publish_branch: gh-pages
+        publish_dir: ./public
 
