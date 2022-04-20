@@ -2,9 +2,9 @@ name: test CI
 
 on: # Event
   push:
-    branches: [ master ] 
+    branches: [ master, gh-pages ] 
   pull_request:
-    branches: [ master, develop ]
+    branches: [ master, gh-pages ]
 
 jobs: 
   test: # Job id
@@ -73,7 +73,7 @@ jobs:
           add: '*.html'
           
       - name: Push commit
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@gh-pages
         with:
           branch: "gh-pages"
           force: true
