@@ -56,11 +56,11 @@ jacocoTestReport {
         html.enabled true
     }
 
-    finalizedBy 'jacocoTestCoverageVerification'
+   // finalizedBy 'jacocoTestCoverageVerification'
 }
 
 // 코드 커버리지 검증 수준 정의 (측정항목 등)
-jacocoTestCoverageVerification {
+/*jacocoTestCoverageVerification {
     violationRules {
         rule {
             enabled = true
@@ -73,7 +73,7 @@ jacocoTestCoverageVerification {
             }
         }
     }
-}
+}*/
 
 /*
 tasks.named('test') {
