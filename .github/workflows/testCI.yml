@@ -75,5 +75,5 @@ jobs:
          with:
           message: 'Update report'
           branch: gh-pages
-          add: '["index.html"]'
+          add: '*.html'
 
