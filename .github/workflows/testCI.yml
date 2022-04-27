@@ -52,8 +52,28 @@ jobs:
         name: jacoco-report
         path: build/reports/jacoco/test/html/index.html
       
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.0
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: build/reports/jacoco/test/html/index.html
+
+  copy:
+     runs-on: ubuntu-latest
+     needs: test
+     steps:
+       # checkout the gh-pages branch
+       - uses: actions/checkout@v2
+         with:
+          ref: gh-pages
+
+       # download the doc files, most of which are generated above
+       - name: Download Output Directory
+         uses: actions/download-artifact@v2
+         with:
+          name: jacoco-report
+          path: build/reports/jacoco/test/html/index.html
+
+       # add, commit and push to gh-pages
+       - name: Commit changes
+         uses: EndBug/add-and-commit@v7
+         with:
+          message: 'Update report'
+          branch: gh-pages
+          add: '["build/reports/jacoco/test/html/index.html"]'
+
