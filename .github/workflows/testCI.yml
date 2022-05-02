@@ -50,8 +50,7 @@ jobs:
         default_author: github_actions
         new_branch: gh-pages
         pull: |
-          'rebase --abort'
-          '--rebase --autostash origin gh-pages'
+          'rebase --abort origin gh-pages'
         message: 'upload badge'
         add: '*.svg'
 
