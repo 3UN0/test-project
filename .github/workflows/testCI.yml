@@ -49,6 +49,7 @@ jobs:
 #         add: '*.svg'
         default_author: github_actions
         new_branch: gh-pages
+        push: 'origin gh-pages'
         message: 'upload badge'
         add: '*.svg'
 
