@@ -18,8 +18,8 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew build
+#     - name: Build with Gradle
+#       run: ./gradlew build
       
     - name: Test with Gradle
       run: ./gradlew test
@@ -32,6 +32,7 @@ jobs:
       uses: cicirello/jacoco-badge-generator@v2.5.0
       with:
         jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+        badges-directory: ./
         colors : '#4c1 #4c1 #4c1 #4c1 #fe7d37 #e05d44'
         intervals: 60 60 60 60 30 0
 
@@ -39,10 +40,16 @@ jobs:
       run: |
         echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
         echo "branch coverage = ${{ steps.jacoco.outputs.branches }}"
+
     - name: Add new badge
       uses: EndBug/add-and-commit@v7
       with:
+#         default_author: github_actions
+#         message: 'upload badge'
+#         add: '*.svg'
         default_author: github_actions
+        new_branch: gh-pages
+        pull: '--rebase --autostash origin gh-pages'
         message: 'upload badge'
         add: '*.svg'
 
