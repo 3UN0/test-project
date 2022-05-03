@@ -56,7 +56,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: jacoco-report
-        path: build/reports/jacoco/test/html
+        path: build/reports/jacoco
       
 
   copy:
