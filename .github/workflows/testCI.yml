@@ -60,6 +60,6 @@ jobs:
         new_branch: gh-pages
         pull: '--rebase --autostash origin gh-pages'
         message: 'Update report'
-        add: '*.svg, *.html'
+        add: '*.svg *.html'
 
         
